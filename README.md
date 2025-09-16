@@ -18,10 +18,15 @@ De modo informal, eu os descreveria da seguinte forma:
 
 O Load Balancer está relacionado distribuir a carga de trabalho entre as instâncias, a fim de evitar que o sistema fique sobrecarregado e venha a falhar.
 
-O Auto 
+O Auto Scaling Group é responsável por gerir o número de recursos computacionais (instãncias) alocados para o sistema.
+
+Ainda no contexto do ASG, a Política de scaling down é reponsável por definir uma condição para que instâncias sejam desalocadas. Isso é essencial para que não ocorra o disperdício e gastos desnecessários.
+
+Já a Política de scaling up é responsável por definir uma condição em que novas instâncias serão alocadas, a fim de suprir a necessidade do sistema e manter sua integridade.
 
 # Passo a Passo para Implementar
-Pré-requisitos
+
+## Pré-requisitos
 Antes de começar, certifique-se de que você já tem:
 
 Uma Amazon Machine Image (AMI) personalizada com a sua aplicação.
@@ -30,7 +35,8 @@ Uma Virtual Private Cloud (VPC) e subnets configuradas.
 
 Um Security Group para suas instâncias.
 
-Passo 1: Configurar um Load Balancer
+
+## Passo 1: Configurar um Load Balancer
 No console da AWS, navegue até EC2 > Load Balancers.
 
 Clique em Create Load Balancer e escolha Application Load Balancer (ALB).
@@ -51,7 +57,7 @@ Configure a Health Check (verificação de saúde) para que o Load Balancer saib
 
 Complete a criação do Load Balancer.
 
-Passo 2: Criar um Auto Scaling Group (ASG)
+## Passo 2: Criar um Auto Scaling Group (ASG)
 No console da AWS, navegue até EC2 > Auto Scaling Groups.
 
 Clique em Create Auto Scaling Group.
@@ -82,7 +88,7 @@ Maximum capacity: O número máximo de instâncias.
 
 Clique em Next para continuar.
 
-Passo 3: Configurar as Scaling Policies
+## Passo 3: Configurar as Scaling Policies
 Na tela de Configure group size and scaling policies, clique em Target tracking scaling policy.
 
 Defina a política para Scaling Up:
